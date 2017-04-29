@@ -1,11 +1,19 @@
 from PyQt5.QtWidgets import QApplication, QDesktopWidget
 from PyQt5 import QtGui, QtCore
 import PyQt5.uic
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 from a_cat import Query
 import sys
 
 (class_ui, class_basic_class) = PyQt5.uic.loadUiType('widget.ui')
 print(class_basic_class)
+
+
+def play_voice(url):
+    """播放音频"""
+    player = QMediaPlayer()
+    player.setMedia(QMediaContent(QtCore.QUrl(url)))
+    player.play()
 
 
 class MainFrame(class_basic_class, class_ui):
@@ -43,11 +51,10 @@ class MainFrame(class_basic_class, class_ui):
 
         self.setWindowTitle("search for: %s" % self.clipboard.text(QtGui.QClipboard.Selection))
         # todo: 如果没有显示结果，需要提示
-        voice_text = ''
-        for x in self.query.word.voices:
-            for key in x:
-                voice_text += key + "\t"
-        self.voice_label1.setText(voice_text)
+
+        if len(self.query.word.voices) >= 2:
+            self.voice_label1.setText(self.query.word.voices[0][0])
+            self.voice_label2.setText(self.query.word.voices[1][0])
 
         base_info = ''
         for x in self.query.word.props:
@@ -60,10 +67,12 @@ class MainFrame(class_basic_class, class_ui):
         print(self.clipboard.text(QtGui.QClipboard.Selection))
         if self.clipboard.text(QtGui.QClipboard.Selection):
             self.query.get(self.clipboard.text(QtGui.QClipboard.Selection))
+            self.setFocusPolicy(QtCore.Qt.StrongFocus)
             self.refresh_window()
             self.show()
 
     def focusOutEvent(self, event):
+        """窗口焦点不在当前的翻译窗口时，窗口隐藏起来"""
         self.hide()
         pass
 

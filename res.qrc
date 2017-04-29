@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="voice">
+    <file>play.ico</file>
+  </qresource>
+</RCC>

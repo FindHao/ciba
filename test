@@ -1,0 +1,132 @@
+<div class="in-base">
+ <div class="in-base-top clearfix">
+  <h1 class="keyword">
+  </h1>
+  <div class="base-top-voice">
+   <div class="base-word" style="height: auto;">
+    <div class="suggest_b">
+     <p class="sug-text">
+      亲，你要找的是不是：
+     </p>
+     <p class="sug-words">
+      <a href="/aamd">
+       aamd
+      </a>
+      <a href="/aimd">
+       aimd
+      </a>
+      <a href="/amad">
+       amad
+      </a>
+      <a href="/ambd">
+       ambd
+      </a>
+      <a href="/amda">
+       amda
+      </a>
+      <a href="/amdg">
+       amdg
+      </a>
+      <a href="/amdi">
+       amdi
+      </a>
+      <a href="/amdr">
+       amdr
+      </a>
+      <a href="/amds">
+       amds
+      </a>
+      <a href="/amid">
+       amid
+      </a>
+     </p>
+    </div>
+   </div>
+  </div>
+ </div>
+ <!-- 一元好课 广告 临时 end -->
+ <hr style="height:1px;border:none;margin:0;margin-top:15px;border-top:1px solid #e4e3c7;"/>
+ <div class="base-bt-bar">
+  <script>
+   (function() {
+                        var s = "_" + Math.random().toString(36).slice(2);
+                        document.write('<div id="' + s + '"></div>');
+                        (window.slotbydup=window.slotbydup || []).push({
+                            id: '2613320',
+                            container: s,
+                            size: '170,20',
+                            display: 'inlay-fix'
+                        });
+                    })();
+  </script>
+  <script src="http://dup.baidustatic.com/js/os.js">
+  </script>
+  <div class="base-bt-sg">
+   <div class="ad_sougo" onclick="_czc.push(['_trackEvent','查词结果','搜狗','基础释义','','']);">
+    <!-- <i></i> -->
+    <span>
+     <script>
+      (function() {
+                                    var s = "_" + Math.random().toString(36).slice(2);
+                                    document.write('<div id="' + s + '"></div>');
+                                    (window.slotbydup=window.slotbydup || []).push({
+                                        id: '2590892',
+                                        container: s,
+                                        size: '170,20',
+                                        display: 'inlay-fix'
+                                    });
+                                })();
+     </script>
+     <script src="http://dup.baidustatic.com/js/os.js">
+     </script>
+    </span>
+   </div>
+  </div>
+ </div>
+ <div class="cb-downloadbar">
+  <div>
+   <span>
+   </span>
+   一键安装桌面版，查词翻译快三倍
+  </div>
+  <a href="http://hoplink.ksosoft.com/wnx0" onclick="_czc.push(['_trackEvent','查词结果页','基础释义','点击下载','','']);" target="_blank">
+  </a>
+ </div>
+ <div class="scb-con">
+  <i class="triangle-top">
+  </i>
+  <div class="scb-wrap">
+   <p class="scb-choose">
+    选择要添加的生词本
+   </p>
+   <div id="scrollbar1">
+    <div class="scrollbar">
+     <div class="track">
+      <div class="thumb">
+      </div>
+     </div>
+    </div>
+    <div class="viewport">
+     <div class="overview">
+      <div class="scb-action">
+       <ul class="scb-list">
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+   <p class="scb-entry">
+    <a class="scb-create" href="javascript:void(0);" onclick="_czc.push(['_trackEvent','查词结果','创建生词本','基本释义右上','','']);">
+     <i class="plus">
+     </i>
+     新建生词本
+    </a>
+    <a class="go-scb" href="javascript:void(0);" onclick="_czc.push(['_trackEvent','查词结果','进入生词本','基本释义右上','','']);" target="_blank">
+     进入生词本
+     <i class="jump">
+     </i>
+    </a>
+   </p>
+  </div>
+ </div>
+</div>
