@@ -24,6 +24,6 @@ http://nullege.com/codes/show/src%40p%40y%40pyqt5-HEAD%40examples%40tools%40cust
 
 界面设计准备先固定内容
 
-# bug:
+## bug:如果是在编辑器中按住鼠标选中的单词，则有问题。
 
-如果是按住鼠标选中的单词，则有问题。
+暂时不考虑多个屏幕的问题。

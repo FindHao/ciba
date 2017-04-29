@@ -31,6 +31,7 @@ class Query:
         base = temp_results[0]
         # with open("test", 'w') as fout:
         #     fout.write(base.prettify())
+        # todo: 只有一个发音的那种会出错 fra
         temp_results = base.find_all("div", class_="base-speak")
         if temp_results:
             temp = temp_results[0]
