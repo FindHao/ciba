@@ -49,7 +49,7 @@ class Query:
                             if temp3:
                                 temp2 = temp3[0]
 
-                    self.word.voices.append({temp1: temp2})
+                    self.word.voices.append((temp1, temp2))
         # 获取基本词义
         temp_results = base.find_all('ul', class_='base-list')
         print(temp_results)
