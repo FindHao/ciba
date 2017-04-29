@@ -24,6 +24,7 @@ class MainFrame(class_basic_class, class_ui):
         self.setupUi(self)
         self.connects()
         # 这里还没太理解，主要是解决了focusoutevent事件不响应的bug
+        self.setFocus()
         self.setFocusPolicy(QtCore.Qt.StrongFocus)
         # todo: 耦合性？？
         self.query = Query()
@@ -67,6 +68,7 @@ class MainFrame(class_basic_class, class_ui):
         print(self.clipboard.text(QtGui.QClipboard.Selection))
         if self.clipboard.text(QtGui.QClipboard.Selection):
             self.query.get(self.clipboard.text(QtGui.QClipboard.Selection))
+            self.setFocus()
             self.setFocusPolicy(QtCore.Qt.StrongFocus)
             self.refresh_window()
             self.show()
