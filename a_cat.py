@@ -29,19 +29,27 @@ class Query:
             return True
         # 获取发音和音标
         base = temp_results[0]
-        # with open("test", 'w') as fout:
-        #     fout.write(base.prettify())
+        with open("test", 'w') as fout:
+            fout.write(base.prettify())
         # todo: 只有一个发音的那种会出错 fra
         temp_results = base.find_all("div", class_="base-speak")
         if temp_results:
             temp = temp_results[0]
             for node in temp:
+                temp1 = ''
+                temp2 = ''
                 if isinstance(node, bs4.element.Tag):
-                    mp3 = voice_url_reg.findall(node.contents[3]['ms-on-mouseover'])
-                    if mp3:
-                        self.word.voices.append({node.contents[1].text: mp3[0]})
-                    else:
-                        self.word.voices.append({node.contents[1].text: ''})
+                    for node1 in node:
+                        if not isinstance(node1, bs4.element.Tag):
+                            continue
+                        if node1.name == 'span':
+                            temp1 = node1.text
+                        elif node1.name == 'i':
+                            temp3 = voice_url_reg.findall(node1['ms-on-mouseover'])
+                            if temp3:
+                                temp2 = temp3[0]
+
+                    self.word.voices.append({temp1: temp2})
         # 获取基本词义
         temp_results = base.find_all('ul', class_='base-list')
         print(temp_results)

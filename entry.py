@@ -47,7 +47,7 @@ class MainFrame(class_basic_class, class_ui):
         for x in self.query.word.voices:
             for key in x:
                 voice_text += key + "\t"
-        self.voice_label.setText(voice_text)
+        self.voice_label1.setText(voice_text)
 
         base_info = ''
         for x in self.query.word.props:
