@@ -139,6 +139,17 @@ ENV/
 # Rope project settings
 .ropeproject
 .idea/*
+test
 将删除 .gitignore
 将删除 .idea/
-test
+将删除 LICENSE
+将删除 README.md
+将删除 a_cat.py
+将删除 devlog.md
+将删除 entry.py
+将删除 play.ico
+将删除 res.qrc
+将删除 res_rc.py
+将删除 test
+将删除 widget.ui
+将删除 word.py
