@@ -21,3 +21,9 @@ http://nullege.com/codes/show/src%40p%40y%40pyqt5-HEAD%40examples%40tools%40cust
 也不用考虑通信了，本身那个进程就是来监听鼠标事件的。
 ## 2017-04-29 15:12:12
 弃用xlib方式获得鼠标点击事件。改用focusoutevent事件。同时增加了空结果的判断。
+
+界面设计准备先固定内容
+
+# bug:
+
+如果是按住鼠标选中的单词，则有问题。

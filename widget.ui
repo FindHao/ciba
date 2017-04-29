@@ -15,9 +15,23 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="voice_label">
      <property name="text">
-      <string>TextLabel</string>
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="base_infor_label">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="changes_label">
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </item>

@@ -36,14 +36,16 @@ class Query:
             temp = temp_results[0]
             for node in temp:
                 if isinstance(node, bs4.element.Tag):
-                    # todo: 没有发音的情况
-                    self.word.voices.append(
-                        {node.contents[1].text: voice_url_reg.findall(node.contents[3]['ms-on-mouseover'])[0]})
-
+                    mp3 = voice_url_reg.findall(node.contents[3]['ms-on-mouseover'])
+                    if mp3:
+                        self.word.voices.append({node.contents[1].text: mp3[0]})
+                    else:
+                        self.word.voices.append({node.contents[1].text: ''})
         # 获取基本词义
         temp_results = base.find_all('ul', class_='base-list')
+        print(temp_results)
         if temp_results:
-            temp = [0]
+            temp = temp_results[0]
             for node in temp:
                 if isinstance(node, bs4.element.Tag):
                     temp_prop = node.span.text

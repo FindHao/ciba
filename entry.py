@@ -13,7 +13,9 @@ class MainFrame(class_basic_class, class_ui):
         # 使用qt自带的监听系统剪贴板的功能
         self.clipboard = QtGui.QGuiApplication.clipboard()
         self.setupUi(self)
+
         self.connects()
+        # 这里还没太理解，主要是解决了focusoutevent事件不响应的bug
         self.setFocusPolicy(QtCore.Qt.StrongFocus)
         # todo: 耦合性？？
         self.query = Query()
@@ -25,18 +27,27 @@ class MainFrame(class_basic_class, class_ui):
         pass
 
     def refresh_window(self):
-        """更新窗口的内容"""
+        """更新翻译的显示"""
+        voice_text = ''
+        for x in self.query.word.voices:
+            for key in x:
+                voice_text += key + "\t"
+        self.voice_label.setText(voice_text)
 
-        pass
+        base_info = ''
+        for x in self.query.word.props:
+            base_info += x + self.query.word.props[x] + '\n'
+        print(base_info)
+        self.base_infor_label.setText(base_info)
 
     def selection_changed(self):
         """剪切板的数据有变化"""
         # todo: 将
         print(self.clipboard.text(QtGui.QClipboard.Selection))
-        self.query.get(self.clipboard.text(QtGui.QClipboard.Selection))
-        print(str(self.query.word))
-        self.show()
-        pass
+        if self.clipboard.text(QtGui.QClipboard.Selection):
+            self.query.get(self.clipboard.text(QtGui.QClipboard.Selection))
+            self.refresh_window()
+            self.show()
 
     def focusOutEvent(self, event):
         self.hide()
@@ -52,11 +63,9 @@ class MainFrame(class_basic_class, class_ui):
 
 if __name__ == '__main__':
     try:
-
         app = QApplication(sys.argv)
         widget = MainFrame()
         widget.hide()
         sys.exit(app.exec_())
     except KeyboardInterrupt:
-        # p.terminate()
         sys.exit(app.exec_())
