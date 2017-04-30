@@ -47,7 +47,7 @@ class MainFrame(class_basic_class, class_ui):
             y -= 20 + 300
         self.move(x, y)
 
-        self.setWindowTitle("search for: %s" % self.clipboard.text(QtGui.QClipboard.Selection))
+        self.setWindowTitle("search for: %s" % self.query.word.text)
 
         if len(self.query.word.voices) >= 2:
             self.voice_label1.setText(self.query.word.voices[0][0])
@@ -78,6 +78,7 @@ class MainFrame(class_basic_class, class_ui):
         text = text.replace('-', '')
         text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
         if text:
+            self.query.word.text = text
             self.query.get(text)
             self.setFocus()
             self.setFocusPolicy(QtCore.Qt.StrongFocus)

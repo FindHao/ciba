@@ -1,5 +1,7 @@
 class Word:
     def __init__(self):
+        # 查询的是什么
+        self.text = ''
         # 存储发音和对应的音频下载地址
         self.voices = []
         # 存储基本示意，包括形容词，动词等词性
