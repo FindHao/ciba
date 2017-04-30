@@ -5,6 +5,7 @@ from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 from a_cat import Query
 import sys
 import signal
+import re
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 (class_ui, class_basic_class) = PyQt5.uic.loadUiType('widget.ui')
@@ -47,7 +48,6 @@ class MainFrame(class_basic_class, class_ui):
         self.move(x, y)
 
         self.setWindowTitle("search for: %s" % self.clipboard.text(QtGui.QClipboard.Selection))
-        # todo: 如果没有显示结果，需要提示
 
         if len(self.query.word.voices) >= 2:
             self.voice_label1.setText(self.query.word.voices[0][0])
@@ -61,6 +61,11 @@ class MainFrame(class_basic_class, class_ui):
             self.voice_label2.hide()
             self.voice_play2.hide()
             self.play_voice(self.query.word.voices[0][1])
+        else:
+            self.voice_label1.setText("No result found.")
+            self.voice_label2.hide()
+            self.voice_play2.hide()
+            self.voice_play1.hide()
         base_info = ''
         for x in self.query.word.props:
             base_info += x + self.query.word.props[x] + '\n'
@@ -68,10 +73,12 @@ class MainFrame(class_basic_class, class_ui):
 
     def selection_changed(self):
         """剪切板的数据有变化"""
-        # todo: 将
-        print(self.clipboard.text(QtGui.QClipboard.Selection))
-        if self.clipboard.text(QtGui.QClipboard.Selection):
-            self.query.get(self.clipboard.text(QtGui.QClipboard.Selection))
+        text = self.clipboard.text(QtGui.QClipboard.Selection)
+        print(text)
+        text = text.replace('-', '')
+        text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
+        if text:
+            self.query.get(text)
             self.setFocus()
             self.setFocusPolicy(QtCore.Qt.StrongFocus)
             self.refresh_window()
