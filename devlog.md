@@ -27,3 +27,11 @@ http://nullege.com/codes/show/src%40p%40y%40pyqt5-HEAD%40examples%40tools%40cust
 ## bug:如果是在编辑器中按住鼠标选中的单词，则有问题。
 
 暂时不考虑多个屏幕的问题。
+问题：还是焦点问题。貌似现在点击标题栏也会hide。
+## 2017-04-30 09:06:28
+播放出现的错误：
+```
+libva info: VA-API version 0.39.4 libva info: va_getDriverName() returns 0 libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/i965_drv_video.so libva info: Found init function __vaDriverInit_0_39 libva info: va_openDriver() returns 0
+```
+卸载`gstreamer1.0-vaapi`包解决了错误，但是还是无法播放。
+##　修复播放bug，因为player不在main frame里。

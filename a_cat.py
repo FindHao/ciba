@@ -52,7 +52,7 @@ class Query:
                     self.word.voices.append((temp1, temp2))
         # 获取基本词义
         temp_results = base.find_all('ul', class_='base-list')
-        print(temp_results)
+        # print(temp_results)
         if temp_results:
             temp = temp_results[0]
             for node in temp:

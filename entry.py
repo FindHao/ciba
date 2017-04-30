@@ -6,15 +6,6 @@ from a_cat import Query
 import sys
 
 (class_ui, class_basic_class) = PyQt5.uic.loadUiType('widget.ui')
-print(class_basic_class)
-
-
-def play_voice(url):
-    """播放音频"""
-    player = QMediaPlayer()
-    player.setMedia(QMediaContent(QtCore.QUrl(url)))
-    player.play()
-
 
 class MainFrame(class_basic_class, class_ui):
     def __init__(self):
@@ -28,6 +19,8 @@ class MainFrame(class_basic_class, class_ui):
         self.setFocusPolicy(QtCore.Qt.StrongFocus)
         # todo: 耦合性？？
         self.query = Query()
+
+        self.player = QMediaPlayer()
 
     def connects(self):
         """信号槽的连接"""
@@ -56,7 +49,15 @@ class MainFrame(class_basic_class, class_ui):
         if len(self.query.word.voices) >= 2:
             self.voice_label1.setText(self.query.word.voices[0][0])
             self.voice_label2.setText(self.query.word.voices[1][0])
-
+            self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
+            self.voice_play2.clicked.connect(lambda: self.play_voice(self.query.word.voices[1][1]))
+            self.play_voice(self.query.word.voices[1][1])
+        elif len(self.query.word.voices) == 1:
+            self.voice_label1.setText(self.query.word.voices[0][0])
+            self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
+            self.voice_label2.hide()
+            self.voice_play2.hide()
+            self.play_voice(self.query.word.voices[0][1])
         base_info = ''
         for x in self.query.word.props:
             base_info += x + self.query.word.props[x] + '\n'
@@ -73,9 +74,17 @@ class MainFrame(class_basic_class, class_ui):
             self.refresh_window()
             self.show()
 
+    def play_voice(self, url):
+        """播放音频"""
+        content = QMediaContent(QtCore.QUrl(url))
+        self.player.setMedia(content)
+        print(url)
+        self.player.play()
+
     def focusOutEvent(self, event):
         """窗口焦点不在当前的翻译窗口时，窗口隐藏起来"""
         self.hide()
+        print(event)
         pass
 
     # 这种方法只适用于当前这个窗口内
