@@ -4,8 +4,11 @@ import PyQt5.uic
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 from a_cat import Query
 import sys
+import signal
 
+signal.signal(signal.SIGINT, signal.SIG_DFL)
 (class_ui, class_basic_class) = PyQt5.uic.loadUiType('widget.ui')
+
 
 class MainFrame(class_basic_class, class_ui):
     def __init__(self):
