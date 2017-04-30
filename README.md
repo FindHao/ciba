@@ -17,7 +17,7 @@
 - [ ] 更多内容的添加，比如例句等等
 
 # 安装和使用
-`git clone`或者下载项目zip，
+`git clone`或者下载release的项目zip，
 ```shell
 pip3 install -r requirements.txt
 ```
@@ -25,3 +25,6 @@ pip3 install -r requirements.txt
 ```shell
 python3 entry.py
 ```
+# 常见问题
+建议通过双击来划词。但是目前对标点符号不一定能准确处理，弹出窗口的标题栏有筛选出的结果，如果发现和所划单词不符，可以在文档里按住鼠标左键进行选中单词。
+如有建议，请提issue。
