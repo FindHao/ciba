@@ -35,3 +35,4 @@ libva info: VA-API version 0.39.4 libva info: va_getDriverName() returns 0 libva
 ```
 卸载`gstreamer1.0-vaapi`包解决了错误，但是还是无法播放。
 ##　修复播放bug，因为player不在main frame里。
+用pipreqs生成的requirements.txt
