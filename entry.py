@@ -32,7 +32,7 @@ class MainFrame(class_basic_class, class_ui):
         self.clipboard.selectionChanged.connect(self.selection_changed)
         pass
 
-    def refresh_window(self):
+    def refresh_window(self, text):
         """更新翻译的显示"""
         # 设置位置和大小
         self.setFixedSize(400, 300)
@@ -47,7 +47,7 @@ class MainFrame(class_basic_class, class_ui):
             y -= 20 + 300
         self.move(x, y)
 
-        self.setWindowTitle("search for: %s" % self.query.word.text)
+        self.setWindowTitle("search for: %s" % text)
 
         if len(self.query.word.voices) >= 2:
             self.voice_label1.setText(self.query.word.voices[0][0])
@@ -78,11 +78,12 @@ class MainFrame(class_basic_class, class_ui):
         text = text.replace('-', '')
         text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
         if text:
+            # todo:检查为什么不生效
             self.query.word.text = text
             self.query.get(text)
             self.setFocus()
             self.setFocusPolicy(QtCore.Qt.StrongFocus)
-            self.refresh_window()
+            self.refresh_window(text)
             self.show()
 
     def play_voice(self, url):
