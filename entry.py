@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QKeyEvent
 from PyQt5.QtWidgets import QApplication, QDesktopWidget
 from PyQt5 import QtGui, QtCore
 import PyQt5.uic
@@ -25,6 +26,8 @@ class MainFrame(class_basic_class, class_ui):
         self.query = Query()
 
         self.player = QMediaPlayer()
+        # 快捷键开启是否划词
+        self.open = True
 
     def connects(self):
         """信号槽的连接"""
@@ -60,6 +63,7 @@ class MainFrame(class_basic_class, class_ui):
             self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
             self.voice_label2.hide()
             self.voice_play2.hide()
+            self.voice_play1.hide()
             self.play_voice(self.query.word.voices[0][1])
         else:
             self.voice_label1.setText("No result found.")
@@ -73,11 +77,15 @@ class MainFrame(class_basic_class, class_ui):
 
     def selection_changed(self):
         """剪切板的数据有变化"""
+        # if not self.open:
+        #     return False
         text = self.clipboard.text(QtGui.QClipboard.Selection)
         print(text)
         text = text.replace('-', '')
         text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
-        if text:
+
+        # wiki上说最长的单词是45, all判断的是是否含有中文
+        if text and len(text) <= 45 and not all('\u4e00' <= char <= '\u9fff' for char in text):
             # todo:检查为什么不生效
             self.query.word.text = text
             self.query.get(text)
@@ -104,7 +112,12 @@ class MainFrame(class_basic_class, class_ui):
         pass
 
     def keyPressEvent(self, e):
-        pass
+        # 只能在窗口内有效。。只能另寻出路
+        keyEvent = QKeyEvent(e)
+        if keyEvent.key() == QtCore.Qt.Key_F10:
+            self.open = False
+
+    pass
 
     def closeEvent(self, e):
         """隐藏窗口到后台"""
