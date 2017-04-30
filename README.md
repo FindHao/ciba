@@ -22,6 +22,7 @@
 安装依赖：
 
 ```shell
+sudo apt-get install python3-pyqt5.qtmultimedia libqt5multimedia5-plugins
 pip3 install -r requirements.txt
 ```
 在项目目录下

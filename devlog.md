@@ -36,3 +36,6 @@ libva info: VA-API version 0.39.4 libva info: va_getDriverName() returns 0 libva
 卸载`gstreamer1.0-vaapi`包解决了错误，但是还是无法播放。
 ##　修复播放bug，因为player不在main frame里。
 用pipreqs生成的requirements.txt
+## 2017-04-30 15:08:33
+在获取pdf里特殊字符的时候，如果直接获得text，肯定是处理过了特殊字符，比如引号可能是^[ ， ^B之类，那么B还是会凑成字符，导致无法识别。
+可以加一个悬浮窗，来专门查词。（直接做成金山词霸那样子？）
