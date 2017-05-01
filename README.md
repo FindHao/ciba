@@ -17,7 +17,7 @@
 - [ ] 更多内容的添加，比如例句等等
 
 # 安装和使用
-`git clone`或者下载release的项目zip，
+`git clone`或者下载release的项目zip（推荐下载release，防止因我正在开发修改导致的bug），
 
 安装依赖：
 

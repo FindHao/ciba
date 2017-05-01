@@ -55,8 +55,10 @@ class MainFrame(class_basic_class, class_ui):
         if len(self.query.word.voices) >= 2:
             self.voice_label1.setText(self.query.word.voices[0][0])
             self.voice_label2.setText(self.query.word.voices[1][0])
-            self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
-            self.voice_play2.clicked.connect(lambda: self.play_voice(self.query.word.voices[1][1]))
+            self.voice_play2.hide()
+            self.voice_play1.hide()
+            # self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
+            # self.voice_play2.clicked.connect(lambda: self.play_voice(self.query.word.voices[1][1]))
             self.play_voice(self.query.word.voices[1][1])
         elif len(self.query.word.voices) == 1:
             self.voice_label1.setText(self.query.word.voices[0][0])

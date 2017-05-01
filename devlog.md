@@ -2,10 +2,10 @@
 发现了类似的github项目[youdao-dict-for-ubuntu](https://github.com/idning/youdao-dict-for-ubuntu)
 里面的思路不错，直接从xcopy找复制的文字
 基础功能：
-- [ ] 获得选词
-- [ ] 抓取金山词霸或者有道的翻译
-- [ ] 抓取发音
-- [ ] 弹出窗口
+- [x] 获得选词
+- [x] 抓取金山词霸或者有道的翻译
+- [x] 抓取发音
+- [x] 弹出窗口
 
 http://nullege.com/codes/show/src%40p%40y%40pyqt5-HEAD%40examples%40tools%40customcompleter%40customcompleter.py/46/PyQt5.QtGui.QCursor/python 
 这里面的textUnderCursor(self): 是真的指光标下面的文字吗？
@@ -43,3 +43,14 @@ libva info: VA-API version 0.39.4 libva info: va_getDriverName() returns 0 libva
 在typora里，只要输入就会自动选择。
 选中大段内容的时候，也不应该翻译。(通过text长度限制解决)
 选中如果有中文，也不翻译。
+
+## 2017-05-01 09:22:21
+
+todo:
+
+- [ ] 对句子的翻译
+- [ ] 主界面的设置
+- [ ] 快捷键
+
+偶尔会出现焦点丢失问题。
+fuzzy 单词只有英音显示，但是读音美音。
