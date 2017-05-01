@@ -78,12 +78,18 @@ class MainFrame(class_basic_class, class_ui):
         # if not self.open:
         #     return False
         text = self.clipboard.text(QtGui.QClipboard.Selection)
-        print(text)
-        text = text.replace('-', '')
-        text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
-        print(text)
-        # wiki上说最长的单词是45, any判断的是是否含有中文
-        if text and not any('\u4e00' <= char <= '\u9fff' for char in text):
+        print(text.encode('utf8'))
+        # 一个单词被切割成两行
+        text = text.replace('- ', '')
+        text = text.replace('-\n', '')
+        # text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
+        text2 = ''
+        for char in text:
+            if '\u0020' <= char <= '\u007e':
+                text2 += char
+        text = text2
+        print(text.encode('utf8'))
+        if text:
             # todo:检查为什么不生效
             self.query.word.text = text
             self.query.get(text)
