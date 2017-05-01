@@ -29,6 +29,13 @@ class Query:
             return True
         # 获取发音和音标
         base = temp_results[0]
+
+        temp_results = base.find_all("div", class_="in-base-top")
+        if temp_results:
+            if temp_results[0].div.get('style'):
+                self.word.props[''] = temp_results[0].div.text
+                return True
+
         # with open("test", 'w') as fout:
         #     fout.write(base.prettify())
         # todo: 只有一个发音的那种会出错 fra

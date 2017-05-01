@@ -51,12 +51,12 @@ class MainFrame(class_basic_class, class_ui):
         self.move(x, y)
 
         self.setWindowTitle("search for: %s" % text)
-
+        # 暂时先隐藏图标
+        self.voice_play2.hide()
+        self.voice_play1.hide()
         if len(self.query.word.voices) >= 2:
             self.voice_label1.setText(self.query.word.voices[0][0])
             self.voice_label2.setText(self.query.word.voices[1][0])
-            self.voice_play2.hide()
-            self.voice_play1.hide()
             # self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
             # self.voice_play2.clicked.connect(lambda: self.play_voice(self.query.word.voices[1][1]))
             self.play_voice(self.query.word.voices[1][1])
@@ -64,14 +64,10 @@ class MainFrame(class_basic_class, class_ui):
             self.voice_label1.setText(self.query.word.voices[0][0])
             self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
             self.voice_label2.hide()
-            self.voice_play2.hide()
-            self.voice_play1.hide()
             self.play_voice(self.query.word.voices[0][1])
         else:
-            self.voice_label1.setText("No result found.")
+            self.voice_label1.setText("No voices found.")
             self.voice_label2.hide()
-            self.voice_play2.hide()
-            self.voice_play1.hide()
         base_info = ''
         for x in self.query.word.props:
             base_info += x + self.query.word.props[x] + '\n'
@@ -85,9 +81,9 @@ class MainFrame(class_basic_class, class_ui):
         print(text)
         text = text.replace('-', '')
         text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
-
-        # wiki上说最长的单词是45, all判断的是是否含有中文
-        if text and len(text) <= 45 and not all('\u4e00' <= char <= '\u9fff' for char in text):
+        print(text)
+        # wiki上说最长的单词是45, any判断的是是否含有中文
+        if text and not any('\u4e00' <= char <= '\u9fff' for char in text):
             # todo:检查为什么不生效
             self.query.word.text = text
             self.query.get(text)
