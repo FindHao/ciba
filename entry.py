@@ -93,11 +93,12 @@ class MainFrame(class_basic_class, class_ui):
         text = text2
         # 增加对单词的判断
         ans = re.split(reg, text)
+        ans2 = []
         for x in ans:
-            if x == '':
-                ans.remove(x)
-        if len(ans) == 1:
-            text = ans[0]
+            if x != '':
+                ans2.append(x)
+        if len(ans2) == 1:
+            text = ans2[0]
         print(text.encode('utf8'))
         if text:
             # todo:检查为什么不生效
