@@ -7,7 +7,9 @@ from a_cat import Query
 import sys
 import signal
 import re
+import string
 
+reg = re.compile('[' + string.punctuation + ' ]')
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 (class_ui, class_basic_class) = PyQt5.uic.loadUiType('widget.ui')
 
@@ -84,10 +86,18 @@ class MainFrame(class_basic_class, class_ui):
         text = text.replace('-\n', '')
         # text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
         text2 = ''
+        # 性能问题和不优雅问题
         for char in text:
             if '\u0020' <= char <= '\u007e':
                 text2 += char
         text = text2
+        # 增加对单词的判断
+        ans = re.split(reg, text)
+        for x in ans:
+            if x == '':
+                ans.remove(x)
+        if len(ans) == 1:
+            text = ans[0]
         print(text.encode('utf8'))
         if text:
             # todo:检查为什么不生效
