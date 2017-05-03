@@ -53,7 +53,8 @@ class MainFrame(class_basic_class, class_ui):
             y -= 20 + 300
         self.move(x, y)
 
-        self.setWindowTitle("search for: %s" % text)
+        self.setWindowTitle("search for:")
+        self.search_words.setText(text)
         # 暂时先隐藏图标
         self.voice_play2.hide()
         self.voice_play1.hide()

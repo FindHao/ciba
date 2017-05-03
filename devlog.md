@@ -71,5 +71,4 @@ heterogeneous 发音出现了几次问题
 
  - [ ] 将显示的内容从标题移到mainframe里
  - [ ] 测试将窗口属性改成popup
- - [ ]  exploite 单词导致崩溃
- operating voltage decreases 也导致崩溃。
+ - [x]  exploite 单词导致崩溃 operating voltage decreases 也导致崩溃。

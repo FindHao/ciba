@@ -33,7 +33,7 @@ class Query:
 
         temp_results = base.find_all("div", class_="in-base-top")
         if temp_results:
-            if temp_results[0].get('div') and temp_results[0].div.get('style'):
+            if len(temp_results[0].find_all('div')) and temp_results[0].div.get('style'):
                 self.word.props[''] = temp_results[0].div.text
                 return True
 
