@@ -1,3 +1,4 @@
+# coding: utf8
 from PyQt5.QtGui import QKeyEvent
 from PyQt5.QtWidgets import QApplication, QDesktopWidget
 from PyQt5 import QtGui, QtCore
@@ -84,6 +85,7 @@ class MainFrame(class_basic_class, class_ui):
         # 一个单词被切割成两行
         text = text.replace('- ', '')
         text = text.replace('-\n', '')
+        text = text.replace('\n', ' ')
         # text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
         text2 = ''
         # 性能问题和不优雅问题

@@ -48,12 +48,28 @@ libva info: VA-API version 0.39.4 libva info: va_getDriverName() returns 0 libva
 
 todo:
 
-- [ ] 对句子的翻译
+
+
+- [x] 对句子的翻译
 - [ ] 主界面的设置
-- [ ] 快捷键
+- [ ]  快捷键
+
+
 
 偶尔会出现焦点丢失问题。
 fuzzy 单词只有英音显示，但是读音美音。
 
 ## 2017-05-01 14:37:21
 v0.0.3 添加对句子的支持。
+疯狂更新了一波版本号。。
+todo:
+- [ ] 最前和最后的字符选择性删除
+## 2017-05-02 14:32:14
+heterogeneous 发音出现了几次问题
+
+## 2017-05-03 09:38:14
+
+ - [ ] 将显示的内容从标题移到mainframe里
+ - [ ] 测试将窗口属性改成popup
+ - [ ]  exploite 单词导致崩溃
+ operating voltage decreases 也导致崩溃。

@@ -1,3 +1,4 @@
+# coding: utf8
 import requests
 from bs4 import BeautifulSoup
 import bs4
@@ -32,7 +33,7 @@ class Query:
 
         temp_results = base.find_all("div", class_="in-base-top")
         if temp_results:
-            if temp_results[0].div.get('style'):
+            if temp_results[0].get('div') and temp_results[0].div.get('style'):
                 self.word.props[''] = temp_results[0].div.text
                 return True
 

@@ -1,3 +1,4 @@
+# coding: utf8
 class Word:
     def __init__(self):
         # 查询的是什么
