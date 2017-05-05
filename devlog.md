@@ -52,7 +52,7 @@ todo:
 
 - [x] 对句子的翻译
 - [ ] 主界面的设置
-- [ ]  快捷键
+- [ ] 快捷键
 
 
 
@@ -69,6 +69,15 @@ heterogeneous 发音出现了几次问题
 
 ## 2017-05-03 09:38:14
 
- - [ ] 将显示的内容从标题移到mainframe里
+ - [x] 将显示的内容从标题移到mainframe里
  - [ ] 测试将窗口属性改成popup
- - [x]  exploite 单词导致崩溃 operating voltage decreases 也导致崩溃。
+ - [x] exploite 单词导致崩溃 operating voltage decreases 也导致崩溃。
+
+ ## 2017年05月04日10:49:52
+ - [ ] 经常会出现只显示英文音标的情况。怀疑是页面格式变换导致
+ - [ ] esc键应该可以hide窗口
+ - [ ] 如果是大写的，是否可以加入小写的释义
+ 
+ idea：通过检测变化的频率，来判断延迟请求。针对编辑器里的bug。而且，不应该检测变化，而是检测selection_changed事件的触发时间。
+ master pdf editor选中没有检测到剪贴板的变化
+ 是否new窗口而不是show会解决此问题？

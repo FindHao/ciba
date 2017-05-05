@@ -27,7 +27,7 @@ class MainFrame(class_basic_class, class_ui):
         self.setFocusPolicy(QtCore.Qt.StrongFocus)
         # todo: 耦合性？？
         self.query = Query()
-
+        # self.setWindowFlags(QtCore.Qt.Desktop)
         self.player = QMediaPlayer()
         # 快捷键开启是否划词
         self.open = True
@@ -130,10 +130,9 @@ class MainFrame(class_basic_class, class_ui):
         pass
 
     def keyPressEvent(self, e):
-        # 只能在窗口内有效。。只能另寻出路
         keyEvent = QKeyEvent(e)
-        if keyEvent.key() == QtCore.Qt.Key_F10:
-            self.open = False
+        if keyEvent.key() == QtCore.Qt.Key_Escape:
+            self.hide()
 
     pass
 
