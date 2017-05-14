@@ -1,6 +1,8 @@
 # coding: utf8
 class Word:
     def __init__(self):
+        # 没有处理过的字符串
+        self.raw_text = ''
         # 查询的是什么
         self.text = ''
         # 存储发音和对应的音频下载地址

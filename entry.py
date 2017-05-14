@@ -1,5 +1,6 @@
 # coding: utf8
 from PyQt5.QtGui import QKeyEvent
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QDesktopWidget
 from PyQt5 import QtGui, QtCore
 import PyQt5.uic
@@ -83,14 +84,14 @@ class MainFrame(class_basic_class, class_ui):
         # if not self.open:
         #     return False
         text = self.clipboard.text(QtGui.QClipboard.Selection)
-        print(text.encode('utf8'))
+        # print(text.encode('utf8'))
         # 一个单词被切割成两行
         text = text.replace('- ', '')
         text = text.replace('-\n', '')
         text = text.replace('\n', ' ')
         # text = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+", " ", text)
         text2 = ''
-        # 性能问题和不优雅问题
+        # todo: 性能问题和不优雅问题
         for char in text:
             if '\u0020' <= char <= '\u007e':
                 text2 += char
@@ -106,6 +107,7 @@ class MainFrame(class_basic_class, class_ui):
         print(text.encode('utf8'))
         if text:
             self.query.get(text)
+            self.query.word.raw_text = self.clipboard.text(QtGui.QClipboard.Selection)
             self.setFocus()
             self.setFocusPolicy(QtCore.Qt.StrongFocus)
             self.refresh_window(text)
@@ -130,8 +132,15 @@ class MainFrame(class_basic_class, class_ui):
 
     def keyPressEvent(self, e):
         keyEvent = QKeyEvent(e)
+        ctrl = e.modifiers() & Qt.ControlModifier
+        shift = e.modifiers() & Qt.ShiftModifier
         if keyEvent.key() == QtCore.Qt.Key_Escape:
             self.hide()
+        # ctrl+c 粘贴处理过的字符串，ctrl+shift+c处理原生选择的数据
+        elif ctrl and keyEvent.key() == QtCore.Qt.Key_C:
+            self.clipboard.setText(self.query.word.text)
+        elif ctrl and keyEvent.key() == QtCore.Qt.Key_C and shift:
+            self.clipboard.setText(self.query.word.raw_text)
 
     pass
 

@@ -15,6 +15,8 @@
 ## todo![](http://findicons.com/files/icons/2166/oxygen/32/kontact_todo.png)
 
 - [ ] 更多内容的添加，比如例句等等
+- [ ] 添加一个主界面
+- [ ] 全局快捷键开启和关闭
 
 # 安装和使用
 `git clone`或者下载release的项目zip（推荐下载release，防止因我正在开发修改导致的bug），
@@ -29,6 +31,8 @@ pip3 install -r requirements.txt
 ```shell
 python3 entry.py
 ```
-# 常见问题
-建议通过**双击**来划词。但是目前对标点符号不一定能准确处理，弹出窗口的标题栏有筛选出的结果，如果发现和所划单词不符，可以在文档里按住鼠标左键进行选中单词。
-如有建议，请提issue。
+
+## 使用tips
+ + 在弹出的释义窗口按下esc可以隐藏窗口，按下ctrl+c可以复制过滤了换行等特殊字符的字符串，ctrl+shift+c可以复制原生的字符串
+ + 建议通过双击取词，在部分编辑器下，可能按住鼠标滑动取词有问题，如遇到，请提issue反馈
+ 
