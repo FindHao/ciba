@@ -36,8 +36,8 @@ class MainFrame(class_basic_class, class_ui):
         # 版本检测
         has_new, r_version = version_check()
         if has_new:
-            QMessageBox.question(self, '检查更新', '服务器上有新版本更新 %s \t' % r_version,
-                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            QMessageBox.question(self, '检查更新', 'Github上有新版本更新 %s\n https://github.com/FindHao/ciba/releases' % r_version,
+                                         QMessageBox.Yes, QMessageBox.No)
 
 
 
@@ -162,6 +162,7 @@ class MainFrame(class_basic_class, class_ui):
 
 if __name__ == '__main__':
     try:
+        print("感谢使用ciba，遇到bug或者有好的建议请到github.com/findhao/ciba提issue或者email to: find@findhao.net")
         app = QApplication(sys.argv)
         widget = MainFrame()
         widget.hide()
