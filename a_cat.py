@@ -75,5 +75,5 @@ class Query:
                     self.word.props[temp_prop] = temp_str
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     pass

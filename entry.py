@@ -1,7 +1,7 @@
 # coding: utf8
 from PyQt5.QtGui import QKeyEvent
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QDesktopWidget
+from PyQt5.QtWidgets import QApplication, QDesktopWidget, QMessageBox
 from PyQt5 import QtGui, QtCore
 import PyQt5.uic
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
@@ -10,6 +10,7 @@ import sys
 import signal
 import re
 import string
+from lib import *
 
 reg = re.compile('[' + string.punctuation + ' ]')
 signal.signal(signal.SIGINT, signal.SIG_DFL)
@@ -30,8 +31,15 @@ class MainFrame(class_basic_class, class_ui):
         self.query = Query()
         # self.setWindowFlags(QtCore.Qt.Popup)
         self.player = QMediaPlayer()
-        # 快捷键开启是否划词
+        # 快捷键开启是否划词 (暂时废弃)
         self.open = True
+        # 版本检测
+        has_new, r_version = version_check()
+        if has_new:
+            QMessageBox.question(self, '检查更新', '服务器上有新版本更新 %s \t' % r_version,
+                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+
+
 
     def connects(self):
         """信号槽的连接"""
