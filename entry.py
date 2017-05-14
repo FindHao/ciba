@@ -27,7 +27,7 @@ class MainFrame(class_basic_class, class_ui):
         self.setFocusPolicy(QtCore.Qt.StrongFocus)
         # todo: 耦合性？？
         self.query = Query()
-        # self.setWindowFlags(QtCore.Qt.Desktop)
+        # self.setWindowFlags(QtCore.Qt.Popup)
         self.player = QMediaPlayer()
         # 快捷键开启是否划词
         self.open = True
@@ -59,19 +59,20 @@ class MainFrame(class_basic_class, class_ui):
         self.voice_play2.hide()
         self.voice_play1.hide()
         if len(self.query.word.voices) >= 2:
-            self.voice_label1.setText(self.query.word.voices[0][0])
-            self.voice_label2.setText(self.query.word.voices[1][0])
+            self.voice_label1.setText(self.query.word.voices[1][0])
+            self.voice_label2.setText(self.query.word.voices[0][0])
+            print(self.query.word.voices[1][0])
             # self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
             # self.voice_play2.clicked.connect(lambda: self.play_voice(self.query.word.voices[1][1]))
             self.play_voice(self.query.word.voices[1][1])
         elif len(self.query.word.voices) == 1:
+            print("lenth 1")
             self.voice_label1.setText(self.query.word.voices[0][0])
-            self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
-            self.voice_label2.hide()
+            # self.voice_play1.clicked.connect(lambda: self.play_voice(self.query.word.voices[0][1]))
             self.play_voice(self.query.word.voices[0][1])
         else:
             self.voice_label1.setText("No voices found.")
-            self.voice_label2.hide()
+
         base_info = ''
         for x in self.query.word.props:
             base_info += x + self.query.word.props[x] + '\n'
@@ -104,8 +105,6 @@ class MainFrame(class_basic_class, class_ui):
             text = ans2[0]
         print(text.encode('utf8'))
         if text:
-            # todo:检查为什么不生效
-            self.query.word.text = text
             self.query.get(text)
             self.setFocus()
             self.setFocusPolicy(QtCore.Qt.StrongFocus)
@@ -138,6 +137,8 @@ class MainFrame(class_basic_class, class_ui):
 
     def closeEvent(self, e):
         """隐藏窗口到后台"""
+        self.voice_label1.setText("")
+        self.voice_label2.setText("")
         self.hide()
         e.ignore()
 

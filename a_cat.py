@@ -17,10 +17,11 @@ class Query:
             "Accept-Encoding": "gzip, deflate, sdch", "Accept-Language": "en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4",
             "Cache-Control": "max-age=0",
         })
-        self.word = Word()
+        self.word = None
 
     def get(self, word_str):
         self.word = Word()
+        self.word.text = word_str
         r = self.s.get("http://www.iciba.com/%s" % word_str)
         soup = BeautifulSoup(r.content, "lxml")
         # todo: 如果没有搜索结果，需要更新
@@ -59,6 +60,7 @@ class Query:
 
                     self.word.voices.append((temp1, temp2))
         # 获取基本词义
+        print(self.word.voices)
         temp_results = base.find_all('ul', class_='base-list')
         # print(temp_results)
         if temp_results:
@@ -71,3 +73,7 @@ class Query:
                         if isinstance(x, bs4.element.Tag):
                             temp_str += x.text
                     self.word.props[temp_prop] = temp_str
+
+
+if __name__=='__main__':
+    pass
