@@ -114,6 +114,8 @@ class MainFrame(class_basic_class, class_ui):
             text = ans2[0]
         print(text.encode('utf8'))
         if text:
+            self.voice_label1.setText("")
+            self.voice_label2.setText("")
             self.query.get(text)
             self.query.word.raw_text = self.clipboard.text(QtGui.QClipboard.Selection)
             self.setFocus()
@@ -162,7 +164,7 @@ class MainFrame(class_basic_class, class_ui):
 
 if __name__ == '__main__':
     try:
-        print("感谢使用ciba，遇到bug或者有好的建议请到github.com/findhao/ciba提issue或者email to: find@findhao.net")
+        print("感谢使用ciba，遇到bug或者有好的建议请到https://github.com/findhao/ciba提issue或者email to: find@findhao.net")
         app = QApplication(sys.argv)
         widget = MainFrame()
         widget.hide()
