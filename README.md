@@ -25,6 +25,11 @@
 
 ```shell
 sudo apt-get install python3-pyqt5.qtmultimedia libqt5multimedia5-plugins
+git clone git@github.com:FindHao/ciba.git
+cd ciba/
+# 建议使用虚拟环境，防止和外部环境冲突
+virtualenv -p /usr/bin/python3 myenv
+source myenv/bin/activate
 pip3 install -r requirements.txt
 ```
 在项目目录下

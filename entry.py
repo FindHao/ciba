@@ -34,10 +34,10 @@ class MainFrame(class_basic_class, class_ui):
         # 快捷键开启是否划词 (暂时废弃)
         self.open = True
         # 版本检测
-        has_new, r_version = version_check()
-        if has_new:
-            QMessageBox.question(self, '检查更新', 'Github上有新版本更新 %s\n https://github.com/FindHao/ciba/releases' % r_version,
-                                         QMessageBox.Yes, QMessageBox.No)
+        # has_new, r_version = version_check()
+        # if has_new:
+        #     QMessageBox.question(self, '检查更新', 'Github上有新版本更新 %s\n https://github.com/FindHao/ciba/releases' % r_version,
+        #                                  QMessageBox.Yes, QMessageBox.No)
 
 
 
@@ -62,6 +62,7 @@ class MainFrame(class_basic_class, class_ui):
             y -= 20 + 300
         self.move(x, y)
 
+        
         self.setWindowTitle("search for:")
         self.search_words.setText(text)
         # 暂时先隐藏图标
@@ -147,7 +148,7 @@ class MainFrame(class_basic_class, class_ui):
         if keyEvent.key() == QtCore.Qt.Key_Escape:
             self.hide()
         # ctrl+c 粘贴处理过的字符串，ctrl+shift+c处理原生选择的数据
-        elif ctrl and keyEvent.key() == QtCore.Qt.Key_C:
+        elif ctrl and keyEvent.key() == QtCore.Qt.Key_C: 
             self.clipboard.setText(self.query.word.text)
         elif ctrl and keyEvent.key() == QtCore.Qt.Key_C and shift:
             self.clipboard.setText(self.query.word.raw_text)
