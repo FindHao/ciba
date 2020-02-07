@@ -165,7 +165,7 @@ class MainFrame(class_basic_class, class_ui):
 
 if __name__ == '__main__':
     try:
-        print("感谢使用ciba，遇到bug或者有好的建议请到https://github.com/findhao/ciba提issue或者email to: find@findhao.net")
+        print("感谢使用ciba，遇到bug或者有好的建议请到 https://github.com/findhao/ciba 提issue或者email to: find@findhao.net")
         app = QApplication(sys.argv)
         widget = MainFrame()
         widget.hide()

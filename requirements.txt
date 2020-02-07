@@ -1,5 +1,5 @@
 #requests==2.13.0
-PyQt5==5.8.2
+PyQt5
 #beautifulsoup4==4.5.3
 lxml
 # python3.5下，qt5.11会报错
