@@ -19,13 +19,20 @@ class Query:
         })
         self.word = None
 
+    def get_cambridge(self, word_str):
+        self.word = Word()
+        self.word.text = word_str
+        r = self.s.get("http://www.iciba.com/%s" % word_str)
+
+        pass
+    """Get translate from iciba.com"""
     def get(self, word_str):
         self.word = Word()
         self.word.text = word_str
         r = self.s.get("http://www.iciba.com/%s" % word_str)
         soup = BeautifulSoup(r.content, "lxml")
         # todo: 如果没有搜索结果，需要更新
-        temp_results = soup.find_all("div", class_="in-base")
+        temp_results = soup.find_all("div", class_="FoldBox_fold__1GZ_2")
 
         if not temp_results:
             return True
@@ -40,7 +47,7 @@ class Query:
 
         # with open("test", 'w') as fout:
         #     fout.write(base.prettify())
-        # todo: 只有一个发音的那种会出错 fra
+        # todo: 发音的页面结构改变了
         temp_results = base.find_all("div", class_="base-speak")
         if temp_results:
             temp = temp_results[0]
@@ -61,18 +68,18 @@ class Query:
                     self.word.voices.append((temp1, temp2))
         # 获取基本词义
         print(self.word.voices)
-        temp_results = base.find_all('ul', class_='base-list')
+        temp_results = base.find_all('ul', class_='Mean_part__1RA2V')
         # print(temp_results)
         if temp_results:
             print(temp_results)
+            meaning_text = ''
             temp = temp_results[0]
             for node in temp:
-                if isinstance(node, bs4.element.Tag):
-                    temp_prop = node.span.text
-                    temp_str = ''
-                    for x in node.p:
-                        if isinstance(x, bs4.element.Tag):
-                            temp_str += x.text
+                if len(node.contents) != 2:
+                    print("something unusual at ", node.text)
+                else:
+                    temp_prop = node.contents[0].text
+                    temp_str = node.contents[1].text
                     self.word.props[temp_prop] = temp_str
 
 
